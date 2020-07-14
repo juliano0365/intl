@@ -12,7 +12,6 @@ import 'dart:html';
 import 'intl_helpers.dart';
 
 class HttpRequestDataReader implements LocaleDataReader {
-  /// The base url from which we read the data.
   String url;
   HttpRequestDataReader(this.url);
 
@@ -22,9 +21,6 @@ class HttpRequestDataReader implements LocaleDataReader {
     return _getString('$url$locale.json', request).then((r) => r.responseText);
   }
 
-  /// Read a string with the given request. This is a stripped down copy
-  /// of HttpRequest getString, but was the simplest way I could find to
-  /// issue a request with a timeout.
   Future<HttpRequest> _getString(String url, HttpRequest xhr) {
     var completer = Completer<HttpRequest>();
     xhr.open('GET', url, async: true);
